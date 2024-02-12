@@ -6,13 +6,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Serializer\SerializerInterface;
 use App\Entity\Looks;
 
 class LooksController extends AbstractController
 {
     #[Route('/looks', name: 'app_looks', methods: ['GET'])]
-    public function getLooks(EntityManagerInterface $em, SerializerInterface $serializer): JsonResponse
+    public function getLooks(EntityManagerInterface $em): JsonResponse
     {
         $looks = $em->getRepository(Looks::class)->findAll();
         
